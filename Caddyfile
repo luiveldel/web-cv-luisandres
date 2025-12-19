@@ -1,0 +1,7 @@
+home.luisandresvelazquez.com {
+    reverse_proxy web-cv:80
+}
+
+n8n.luisandresvelazquez.com {
+    reverse_proxy n8n:5678
+}

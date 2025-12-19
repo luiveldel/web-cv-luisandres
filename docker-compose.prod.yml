@@ -1,19 +1,17 @@
 version: '3.8'
 
 services:
-  # Reverse Proxy
-  traefik:
-    image: traefik:v2.10
-    command:
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
+  # Caddy Reverse Proxy
+  caddy:
+    image: caddy:latest
+    restart: unless-stopped
     ports:
       - "80:80"
-      - "8080:8080" # Traefik Dashboard (optional)
+      - "443:443"
     volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+      - caddy_config:/config
     networks:
       - web
 
@@ -21,10 +19,8 @@ services:
   web-cv:
     build: .
     restart: always
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.web-cv.rule=Host(`home.luisandresvelazquez.com`)"
-      - "traefik.http.routers.web-cv.entrypoints=web"
+    expose:
+      - "80"
     networks:
       - web
 
@@ -34,17 +30,16 @@ services:
     restart: unless-stopped
     environment:
       - GENERIC_TIMEZONE=Europe/Berlin
-      - WEBHOOK_URL=http://n8n.luisandresvelazquez.com/
+      - WEBHOOK_URL=https://n8n.luisandresvelazquez.com/
     volumes:
       - ./n8n_data:/home/node/.n8n
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.n8n.rule=Host(`n8n.luisandresvelazquez.com`)"
-      - "traefik.http.routers.n8n.entrypoints=web"
-      - "traefik.http.services.n8n.loadbalancer.server.port=5678"
     networks:
       - web
 
 networks:
   web:
     external: false
+
+volumes:
+  caddy_data:
+  caddy_config:
