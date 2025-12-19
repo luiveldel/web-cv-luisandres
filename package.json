@@ -1,0 +1,21 @@
+{
+  "name": "web-cv-luisandres",
+  "version": "1.0.0",
+  "description": "Web curriculum vitae for Luis Andres",
+  "type": "module",
+  "scripts": {
+    "start": "http-server . -p 8080",
+    "lint": "eslint ."
+  },
+  "keywords": [],
+  "author": "Luis Andres",
+  "license": "ISC",
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.39.2",
+    "eslint": "^9.39.2",
+    "globals": "^16.5.0"
+  }
+}

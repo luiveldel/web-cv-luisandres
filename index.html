@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="canonical" href="https://luisandresvelazquez.com/">
+    <title>Luis Andres Velazquez | Data Engineer</title>
+    <meta name="title" content="Luis Andres Velazquez | Data Engineer">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Luis Velazquez">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luisandresvelazquez.com/">
+    <meta property="og:title" content="Luis Andres Velazquez | Data Engineer">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+    <link rel="stylesheet" href="css/styles.css">
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "name": "Luis Andres Velazquez",
+        "url": "https://luisandresvelazquez.com/",
+        "description": "Web CV de Luis Andres"
+      }
+    </script>
+
+    <script>
+      const root = document.documentElement
+      const theme = localStorage.getItem('theme')
+      if (
+        theme === 'dark' ||
+        (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        root.classList.add('theme-dark')
+      } else {
+        root.classList.remove('theme-dark')
+      }
+    </script>
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <a href="/">
+        <img alt="Logo" src="images/logo.webp?v=2" width="75" height="75">
+      </a>
+      <nav>
+        <a class="selected" href="/">home</a>
+        <a class="" href="/about">about me</a>
+
+        <div class="theme-toggle-container">
+            <div class="theme-toggle">
+                <label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <input type="radio" name="theme-toggle" value="light" title="Use light theme" aria-label="Use light theme">
+                </label>
+                <label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <input type="radio" name="theme-toggle" value="dark" title="Use dark theme" aria-label="Use dark theme">
+                </label>
+            </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="home-container">
+        <div class="hero-section">
+          <div class="hero-content">
+            <h1>Luis Andrés Velázquez</h1>
+            <p class="subtitle">Data Engineer</p>
+            <div class="social-links">
+              <a href="mailto:luisandresvelazquez.d@gmail.com" class="social-btn email">
+                <span class="icon">✉️</span> luisandresvelazquez.d@gmail.com
+              </a>
+              <a href="https://github.com/luiveldel" target="_blank" class="social-btn github">
+                <span class="icon">💾</span> GitHub
+              </a>
+            </div>
+          </div>
+          <div class="hero-image-container">
+            <picture>
+              <source srcset="images/home-illustration.webp" media="(min-width: 600px)" type="image/webp">
+              <img class="hero-image" alt="Luis Andres Velazquez - Data Engineer" src="images/home-illustration-small.webp" width="400" height="400" loading="eager" fetchpriority="high">
+            </picture>
+          </div>
+        </div>
+
+        <section class="recent-posts">
+           <!-- Post Grid Empty for Now as per request -->
+          <div class="posts-grid">
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <span>
+        @ 2025 Luis A. Velazquez Delgado.
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>

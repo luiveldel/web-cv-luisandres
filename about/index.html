@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <title>About Me | Luis Andres Velazquez</title>
+    <meta name="description" content="From Chemical Engineering to Data Engineering. My journey and skills.">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <script>
+      const root = document.documentElement
+      const theme = localStorage.getItem('theme')
+      if (
+        theme === 'dark' ||
+        (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        root.classList.add('theme-dark')
+      } else {
+        root.classList.remove('theme-dark')
+      }
+    </script>
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <a href="/">
+        <img alt="Logo" src="../images/logo.webp?v=2" width="75" height="75">
+      </a>
+      <nav>
+        <a class="" href="/">home</a>
+        <a class="selected" href="/about">sobre mi</a>
+
+        <div class="theme-toggle-container">
+            <div class="theme-toggle">
+                <label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <input type="radio" name="theme-toggle" value="light" title="Use light theme" aria-label="Use light theme">
+                </label>
+                <label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <input type="radio" name="theme-toggle" value="dark" title="Use dark theme" aria-label="Use dark theme">
+                </label>
+            </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="home-container">
+        <article class="about-content" style="max-width: 800px; margin: 0 auto; line-height: 1.8;">
+            <h1 style="font-size: 3rem; margin-bottom: 2rem;">From Chemical Reactions to Data Pipelines</h1>
+
+            <p style="font-size: 1.1rem; color: var(--text-secondary); margin-bottom: 1.5rem;">
+                I started out in <strong>Chemical Engineering</strong>, obsessed with how complex systems behave and how small changes can reshape entire processes. Tired of wrestling with Excel sheets during my business management days, I discovered <strong>Python</strong> and <strong>pandas</strong>—they made automating extractions a breeze, and that's when I realized coding's true power and found my passion. I've always loved computers: I built my own PC piece by piece, and even my friends' rigs too.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                The switch felt natural. The same ideas of flow, optimization and efficiency I used for industrial processes, I now apply to data pipelines and cloud architectures. Today I work as a <strong>Data Engineer</strong> in the airline world, designing and orchestrating ETL/ELT workflows in <strong>AWS</strong> with <strong>Airflow</strong> and <strong>dbt</strong> so that raw operational and commercial data becomes something teams can actually trust and use.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                Most of my day is spent building and maintaining data platforms for <strong>Iberia Airlines</strong>: migrating old pipelines into modern AWS accounts, industrializing dbt models, and supporting analytics and AI use cases on top of <strong>Redshift</strong> and <strong>S3</strong>. My toolbox usually includes Python, SQL, Spark, Bash, Airflow, dbt, Redshift, S3, Docker and Git, always with an eye on testing, version control and making things reproducible instead of “it only runs on my laptop.”
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                Before going full‑on data, I worked closer to operations as <strong>A400M Flight Test Engineer</strong>, Configuration Management Engineer for <strong>Bombardier/Alstom</strong> in the UK, and Production Control at <strong>Airbus Defence and Space</strong>. Being so close to aircraft and trains taught me how important data quality, traceability and change control are when your dashboards can impact real hardware and real money.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                I work in Spanish and English without problems, and I keep adding languages like Portuguese and some Turkish to the mix.
+            </p>
+
+            <p style="margin-bottom: 1.5rem;">
+                Outside work, you will probably find me volunteering, in the kitchen, chasing wind with a kitesurf, or playing League of Legends. This site is where all of that comes together: a place to show what I build, how I think about data, and the kind of problems I enjoy solving.
+            </p>
+
+            <h2 style="font-size: 2rem; margin-top: 3rem; margin-bottom: 1.5rem;">Tech Stack</h2>
+
+            <div class="skills-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                <div class="skill-card" style="background: var(--background-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--primary-color);">Core</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <img src="../images/icons/python.svg" alt="Python" width="32" height="32">
+                            <span>Python</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <img src="../images/icons/postgresql.svg" alt="SQL" width="32" height="32">
+                            <span>SQL</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card" style="background: var(--background-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--primary-color);">Orchestration & ETL</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <img src="../images/icons/airflow.png" alt="Airflow" width="32" height="32" style="object-fit: contain;">
+                            <span>Airflow</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <img src="../images/icons/dbt.svg" alt="dbt" width="32" height="32" style="object-fit: contain;">
+                            <span>dbt</span>
+                        </div>
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <img src="../images/icons/spark.svg" alt="Spark" width="32" height="32" style="object-fit: contain;">
+                            <span>Spark</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="skill-card" style="background: var(--background-secondary); padding: 1.5rem; border-radius: 12px; border: 1px solid var(--border-color);">
+                    <h3 style="margin-top: 0; margin-bottom: 1rem; color: var(--primary-color);">Cloud</h3>
+                    <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                        <div style="display: flex; align-items: center; gap: 0.8rem;">
+                            <img src="../images/icons/aws.svg" alt="AWS" width="32" height="32" style="object-fit: contain;">
+                            <span>AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </article>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <span>
+        @ 2025 Luis Andres Velazquez Delgado.
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>
