@@ -1,45 +1,15 @@
 version: '3.8'
 
 services:
-  # Caddy Reverse Proxy
-  caddy:
-    image: caddy:latest
-    restart: unless-stopped
-    ports:
-      - "80:80"
-      - "443:443"
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile
-      - caddy_data:/data
-      - caddy_config:/config
-    networks:
-      - web
-
-  # Web CV
   web-cv:
     build: .
+    container_name: web-cv
     restart: always
     expose:
       - "80"
     networks:
-      - web
-
-  # n8n App
-  n8n:
-    image: n8nio/n8n:latest
-    restart: unless-stopped
-    environment:
-      - GENERIC_TIMEZONE=Europe/Berlin
-      - WEBHOOK_URL=https://n8n.luisandresvelazquez.com/
-    volumes:
-      - ./n8n_data:/home/node/.n8n
-    networks:
-      - web
+      - web_proxy
 
 networks:
-  web:
-    external: false
-
-volumes:
-  caddy_data:
-  caddy_config:
+  web_proxy:
+    external: true
