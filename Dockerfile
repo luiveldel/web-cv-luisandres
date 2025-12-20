@@ -6,6 +6,7 @@ COPY css /usr/share/nginx/html/css/
 COPY js /usr/share/nginx/html/js/
 COPY images /usr/share/nginx/html/images/
 COPY fonts /usr/share/nginx/html/fonts/
+COPY about /usr/share/nginx/html/about/
 
 # Expose port 80
 EXPOSE 80
