@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="canonical" href="https://luisandresvelazquez.com/projects/">
+    <title>Projects | Luis Andres Velazquez</title>
+    <meta name="title" content="Projects | Luis Andres Velazquez">
+    <meta name="description" content="My latest GitHub projects and open source contributions.">
+    <meta name="robots" content="index, follow">
+    <meta name="author" content="Luis Velazquez">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://luisandresvelazquez.com/projects/">
+    <meta property="og:title" content="Projects | Luis Andres Velazquez">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin="">
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <script>
+      const root = document.documentElement
+      const theme = localStorage.getItem('theme')
+      if (
+        theme === 'dark' ||
+        (!theme && window.matchMedia('(prefers-color-scheme: dark)').matches)
+      ) {
+        root.classList.add('theme-dark')
+      } else {
+        root.classList.remove('theme-dark')
+      }
+    </script>
+</head>
+<body>
+  <div class="layout">
+    <header>
+      <a href="/">
+        <img alt="Logo" src="../images/happy.webp?v=2" width="75" height="75">
+      </a>
+      <nav>
+        <a class="" href="/">home</a>
+        <a class="" href="/about/">about me</a>
+        <a class="selected" href="/projects/">projects</a>
+
+        <div class="theme-toggle-container">
+            <div class="theme-toggle">
+                <label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path fill-rule="evenodd" d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z" clip-rule="evenodd"></path>
+                    </svg>
+                    <input type="radio" name="theme-toggle" value="light" title="Use light theme" aria-label="Use light theme">
+                </label>
+                <label>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="currentColor">
+                        <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
+                    </svg>
+                    <input type="radio" name="theme-toggle" value="dark" title="Use dark theme" aria-label="Use dark theme">
+                </label>
+            </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="projects-container">
+        <div class="projects-header">
+          <h1>Projects</h1>
+          <p>My latest work on GitHub</p>
+        </div>
+
+        <div id="projects-grid" class="projects-grid">
+          <div class="projects-loading">Loading projects...</div>
+        </div>
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-content">
+        <span>
+        @ 2025 Luis A. Velazquez Delgado.
+        </span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../js/script.js" defer></script>
+  <script src="../js/theme-toggle.js" defer></script>
+  <script>
+    // Language colors (GitHub style)
+    const languageColors = {
+      'JavaScript': '#f1e05a',
+      'TypeScript': '#3178c6',
+      'Python': '#3572A5',
+      'HTML': '#e34c26',
+      'CSS': '#563d7c',
+      'Shell': '#89e051',
+      'Go': '#00ADD8',
+      'Rust': '#dea584',
+      'Java': '#b07219',
+      'C++': '#f34b7d',
+      'C': '#555555',
+      'Ruby': '#701516',
+      'PHP': '#4F5D95',
+      'Swift': '#ffac45',
+      'Kotlin': '#A97BFF',
+      'Dockerfile': '#384d54',
+      'Jupyter Notebook': '#DA5B0B'
+    };
+
+    async function fetchGitHubProjects() {
+      const container = document.getElementById('projects-grid');
+
+      try {
+        const response = await fetch('https://api.github.com/users/luiveldel/repos?sort=updated&per_page=6');
+
+        if (!response.ok) {
+          throw new Error('Failed to fetch repositories');
+        }
+
+        const repos = await response.json();
+
+        // Filter out forked repos and get the 2 most recent
+        const ownRepos = repos.filter(repo => !repo.fork).slice(0, 2);
+
+        if (ownRepos.length === 0) {
+          container.innerHTML = '<p class="projects-loading">No projects found.</p>';
+          return;
+        }
+
+        container.innerHTML = ownRepos.map(repo => `
+          <article class="project-card">
+            <h3><a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a></h3>
+            <p class="project-description">${repo.description || 'No description available.'}</p>
+            <div class="project-meta">
+              ${repo.language ? `
+                <span class="project-language">
+                  <span class="language-dot" style="background: ${languageColors[repo.language] || '#858585'}"></span>
+                  ${repo.language}
+                </span>
+              ` : ''}
+              <span class="project-stars">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                  <path d="M8 .25a.75.75 0 01.673.418l1.882 3.815 4.21.612a.75.75 0 01.416 1.279l-3.046 2.97.719 4.192a.75.75 0 01-1.088.791L8 12.347l-3.766 1.98a.75.75 0 01-1.088-.79l.72-4.194L.818 6.374a.75.75 0 01.416-1.28l4.21-.611L7.327.668A.75.75 0 018 .25z"/>
+                </svg>
+                ${repo.stargazers_count}
+              </span>
+            </div>
+            <a href="${repo.html_url}" target="_blank" rel="noopener" class="project-link">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor">
+                <path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+              </svg>
+              View on GitHub
+            </a>
+          </article>
+        `).join('');
+
+      } catch (error) {
+        console.error('Error fetching GitHub projects:', error);
+        container.innerHTML = `
+          <div class="projects-error">
+            <p>Unable to load projects. Please try again later.</p>
+          </div>
+        `;
+      }
+    }
+
+    // Fetch projects when DOM is ready
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', fetchGitHubProjects);
+    } else {
+      fetchGitHubProjects();
+    }
+  </script>
+</body>
+</html>
