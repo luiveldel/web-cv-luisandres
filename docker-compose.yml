@@ -1,8 +1,15 @@
 services:
   web-cv:
     build: .
+    container_name: web-cv
     ports:
       - "8080:80"
     volumes:
       - .:/usr/share/nginx/html
-    restart: always
+    restart: unless-stopped
+    networks:
+      - web_proxy
+
+networks:
+  web_proxy:
+    external: true

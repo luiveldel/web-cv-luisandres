@@ -317,6 +317,38 @@ footer {
     padding: 2rem 1rem;
 }
 
+/* Metabase embed section */
+.metabase-section {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-color);
+}
+
+.metabase-section h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+}
+
+.metabase-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.metabase-embed {
+    background: var(--background-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    min-height: 500px;
+}
+
+.metabase-embed metabase-dashboard {
+    display: block;
+    width: 100%;
+    min-height: 500px;
+}
+
 .projects-header {
     text-align: center;
     margin-bottom: 3rem;

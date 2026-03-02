@@ -72,6 +72,22 @@
         <div id="projects-grid" class="projects-grid">
           <div class="projects-loading">Loading projects...</div>
         </div>
+
+        <section class="metabase-section">
+          <h2>Flight Analytics</h2>
+          <p class="metabase-description">Self-service dashboards: aviation data, delays, routes.</p>
+          <div class="metabase-embed">
+            <iframe
+              id="metabase-dashboard"
+              data-src-base="https://meta.luisandresvelazquez.com/public/dashboard/2"
+              frameborder="0"
+              width="100%"
+              height="600"
+              allowtransparency
+              title="Flight Analytics Dashboard">
+            </iframe>
+          </div>
+        </section>
       </div>
     </main>
 
@@ -86,6 +102,23 @@
 
   <script src="../js/script.js" defer></script>
   <script src="../js/theme-toggle.js" defer></script>
+  <script>
+    // Sync Metabase iframe theme with page theme. Use hash params for appearance.
+    (function() {
+      var iframe = document.getElementById('metabase-dashboard');
+      if (!iframe) return;
+      var baseUrl = iframe.getAttribute('data-src-base');
+      function setIframeTheme() {
+        var theme = document.documentElement.classList.contains('theme-dark') ? 'night' : 'light';
+        iframe.src = baseUrl + '#theme=' + theme + '&bordered=false';
+      }
+      window.addEventListener('themechange', function(e) {
+        var theme = e.detail.theme === 'dark' ? 'night' : 'light';
+        iframe.src = baseUrl + '#theme=' + theme + '&bordered=false';
+      });
+      setIframeTheme();
+    })();
+  </script>
   <script>
     // Language colors (GitHub style)
     const languageColors = {

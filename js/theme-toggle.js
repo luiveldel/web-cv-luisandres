@@ -31,6 +31,7 @@
         }
         localStorage.setItem('theme', theme);
         updateActiveState(theme);
+        window.dispatchEvent(new CustomEvent('themechange', { detail: { theme } }));
     }
 
     // Initialize
